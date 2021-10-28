@@ -57,6 +57,8 @@ letterList.forEach(letter => {
     }
 })
 
+const tileRack = document.querySelector('#tile-rack');
+
 function fillRack() {
     const numToFill = 7; // HARDCODED FOR TESTING
     for (let i = 0; i < numToFill; i++) {
