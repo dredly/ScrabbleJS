@@ -16,10 +16,7 @@ function hasLetters(attemptedWord, availableLetters) {
 
     //Returns a boolean value
 
-    //TODO: Add functionality for a blank tile
     let numBlanks = availableLetters.filter(item => item === '').length;
-    console.log(availableLetters);
-    console.log(numBlanks);
 
     for (let letter of attemptedWord) {
         const numInAttempt = attemptedWord.filter(item => item === letter).length;
@@ -27,7 +24,11 @@ function hasLetters(attemptedWord, availableLetters) {
         if (numBlanks === 0) {
             if (numInAttempt > numInAvailable) return false;
         } else {
-            console.log(`There are ${numBlanks} blank tiles`);
+            // Check if blank is being used
+            if (!availableLetters.includes(letter)) {
+                numBlanks -= 1;
+                console.log('Used one blank');
+            }
         }
     }
     return true;
