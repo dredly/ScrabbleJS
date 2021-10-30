@@ -18,6 +18,12 @@ class Letter {
     }
 }
 
+class TileRack {
+    constructor(display) {
+        this.display = display;
+    }
+}
+
 const createLetters = () => {
     aLetter = new Letter('A', 1, 9);
     bLetter = new Letter('B', 3, 2);
