@@ -5,6 +5,7 @@ class Letter {
         this.qty = qty;
     }
     makeTile() {
+        // Method to render the html for a given letter object
         const { character, pointsVal } = this;
         console.log(character);
         const tile = document.createElement('div');
@@ -60,6 +61,8 @@ letterList.forEach(letter => {
 const tileRack = document.querySelector('#tile-rack');
 
 function fillRack() {
+    // Selects random letters to fill the tile rack, and deletes them
+    // from the letter bag to prevent duplication
     const numToFill = 7; // HARDCODED FOR TESTING
     for (let i = 0; i < numToFill; i++) {
         const randIndex = Math.floor(Math.random() * letterBag.length);
