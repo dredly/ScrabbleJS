@@ -84,6 +84,7 @@ function addPlacementListeners(wordAttempt) {
                 console.log(wordPlacement);
                 let wordLength = wordAttempt.length;
                 let placementList = getPlacementList(wordLength, wordPlacement.start, wordPlacement.direction);
+                console.log(placementList);
                 if (isValidStartPlacement(placementList)) {
                     const wordArr = wordAttempt.map(chr => getLetterObj(chr));
                     placeWord(wordArr, placementList);
