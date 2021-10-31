@@ -28,29 +28,24 @@ const tileRack = {
             }
         }
     },
-    remove: function (inds) {
-        // inds should be an array of integers from 0 to 6 inclusive.
-        // letter objects will be removed from the letters array according to the given indices in inds
-
-        // The following line compensates for the fact that the index of the targeted letter changes each time
-        // a letter is removed.
-
-        //BUG TO FIX: only works when removed in order they appear in the tileRack
-        removalInds = inds.map(ind => ind - inds.indexOf(ind));
-        for (let ind of removalInds) {
-            console.log(ind)
-            this.letters.splice(ind, 1);
-        }
+    remove: function (ind) {
+        // Removes a letter object at the given index from the letters array
+        this.letters.splice(ind, 1);
     },
     replenish: function (usedLetters) {
-        const usedInds = usedLetters.map(lett => this.letters.indexOf(lett));
-        this.remove(usedInds);
+        // Takes an array of letter objects that have been used, and replaces them
+        // with new ketters frin the bag
+        for (lett of usedLetters) {
+            const current_ind = this.letters.indexOf(lett);
+            this.remove(current_ind);
+        }
         this.fill(7 - usedLetters.length);
         this.reRender();
     }
 };
 
 function setupTileRack() {
+    // Initialises the tileRack for the start of the game
     tileRack.fill(7);
     tileRack.initialRender();
     tileRack.reRender();
