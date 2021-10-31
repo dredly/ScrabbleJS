@@ -15,7 +15,7 @@ const tileRack = {
     initialRender: function () {
         // Renders 7 blank tiles to populate the tileRack HTML element
         for (let i = 0; i < 7; i++) {
-            this.display.append(blankLetter.makeTile());
+            this.display.append(document.createElement('div'));
         }
     },
     reRender: function () {
@@ -24,7 +24,7 @@ const tileRack = {
             if (i < this.letters.length) {
                 this.display.replaceChild(this.letters[i].makeTile(), this.display.children[i]);
             } else {
-                this.display.replaceChild(blankLetter.makeTile(), this.display.children[i]);
+                this.display.replaceChild(document.createElement('div'), this.display.children[i]);
             }
         }
     },
@@ -39,7 +39,7 @@ const tileRack = {
             const current_ind = this.letters.indexOf(lett);
             this.remove(current_ind);
         }
-        this.fill(7 - usedLetters.length);
+        this.fill(usedLetters.length);
         this.reRender();
     }
 };
