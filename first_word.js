@@ -91,6 +91,7 @@ function addPlacementListeners(wordAttempt) {
                 if (isValidStartPlacement(placementList)) {
                     const wordArr = wordAttempt.map(chr => getLetterObj(chr));
                     placeWord(wordArr, placementList);
+                    tileRack.replenish(wordArr);
                 } else console.log('Word must cover the start square');
             })
         })
