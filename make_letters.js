@@ -18,12 +18,6 @@ class Letter {
     }
 }
 
-class TileRack {
-    constructor(display) {
-        this.display = display;
-    }
-}
-
 const createLetters = () => {
     aLetter = new Letter('A', 1, 9);
     bLetter = new Letter('B', 3, 2);
@@ -64,18 +58,20 @@ letterList.forEach(letter => {
     }
 })
 
-const tileRack = document.querySelector('#tile-rack');
-
-function fillRack() {
-    // Selects random letters to fill the tile rack, and deletes them
-    // from the letter bag to prevent duplication
-    const numToFill = 7; // HARDCODED FOR TESTING
-    for (let i = 0; i < numToFill; i++) {
-        const randIndex = Math.floor(Math.random() * letterBag.length);
-        const randLetter = letterBag[randIndex];
-        letterBag.splice(randIndex, 1);
-        tileRack.append(randLetter.makeTile());
+const tileRack = {
+    display: document.querySelector('#tile-rack'),
+    letters: [],
+    fill: function (numToFill) {
+        for (let i = 0; i < numToFill; i++) {
+            const randIndex = Math.floor(Math.random() * letterBag.length);
+            const randLetter = letterBag[randIndex];
+            letterBag.splice(randIndex, 1);
+            this.letters.push(randLetter);
+        }
+    },
+    render: function () {
+        for (let lett of this.letters) {
+            this.display.append(lett.makeTile());
+        }
     }
-}
-
-fillRack();
+};
