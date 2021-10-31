@@ -104,11 +104,11 @@ wordForm.addEventListener('submit', evt => {
     console.log(wordAttempt);
     // Likewise, extract a list of uppercase letters from the tilerack so that
     // they can be compared with the attempted word
-    const currentLetters = [...tileRack.children].map(tile => {
-        return tile.innerText[0] || '';
+    const currentLetters = tileRack.letters.map(tile => {
+        return tile.character;
     });
     if (!hasLetters(wordAttempt, currentLetters)) {
-        console.log('You do not have the letters to write that word')
+        console.log('You do not have the letters to write that word');
     } else {
         addPlacementListeners(wordAttempt);
     }
