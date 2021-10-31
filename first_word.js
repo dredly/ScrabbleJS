@@ -67,6 +67,9 @@ function getLetterObj(character) {
 // Initialise an object to store direction and starting square for placing words
 const wordPlacement = { start: 0, direction: 'right' };
 
+// Initialise the tile rack
+setupTileRack();
+
 function addPlacementListeners(wordAttempt) {
     // Add a click event listener on each square.
     // Once the square has been clicked, listen for a keyboard event
