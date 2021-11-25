@@ -6,7 +6,7 @@ for (let i = 0; i < 15 ** 2; i++) {
     boardSquare.classList.add('board-square');
     board.append(boardSquare);
 }
-const squaresArray = [...document.querySelector('#board').children];
+let squaresArray = [...document.querySelector('#board').children];
 
 // Define the location of the bonus squares
 const dlSquareList = [3, 11, 36, 38, 45, 52, 59, 92, 96, 98, 102, 122, 126, 128, 132, 165, 172, 179, 186, 188, 213, 221];

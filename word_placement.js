@@ -5,6 +5,8 @@ function placeWord(wordArr, placementList) {
     for (let i = 0; i < wordArr.length; i++) {
         placeOnBoard(wordArr[i], placementList[i]);
     }
+    // Update the squares array to include the newly placed tiles 
+    squaresArray = [...document.querySelector('#board').children];
 };
 
 function placeOnBoard(letter, placement) {
@@ -57,4 +59,8 @@ function hasLetters(attemptedWord, availableLetters) {
 function getLetterObj(character) {
     // Takes a single character, and returns the letter object associated with it
     return letterList.filter(letter => letter.character === character)[0];
+}
+
+function checkNeighbours(coordArr) {
+
 }
