@@ -61,6 +61,16 @@ function getLetterObj(character) {
     return letterList.filter(letter => letter.character === character)[0];
 }
 
-function checkNeighbours(coordArr) {
-
+function getNeighbourPositions(wordPosArr) {
+    const neighbours = [];
+    for (let pos of wordPosArr) {
+        console.log(pos);
+        if (!neighbours.includes(pos)) {
+            if (pos % 15 !== 0) neighbours.push(pos - 1);
+            if (pos % 14 !== 0 || pos === 0) neighbours.push(pos + 1);
+            if (pos - 15 >= 0) neighbours.push(pos - 15);
+            if (pos + 15 < 15 ** 2) neighbours.push(pos + 15);
+        }
+    }
+    return neighbours;
 }
