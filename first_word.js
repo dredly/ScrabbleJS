@@ -17,11 +17,13 @@ function addPlacementListeners(wordAttempt) {
         square.addEventListener('click', () => {
             wordPlacement.start = squaresArray.indexOf(square);
             console.log(`Clicked on square number ${squaresArray.indexOf(square)}`);
-            window.addEventListener('keydown', evt => {
-                if (evt.key === 'ArrowDown' || evt.key === 'ArrowRight')
+            window.addEventListener('keydown', function handleKeyPress(evt) {
+                if (evt.key === 'ArrowDown' || evt.key === 'ArrowRight') {
                     if (evt.key === 'ArrowDown') {
                         wordPlacement.direction = 'down';
                     } else wordPlacement.direction = 'right';
+                    window.removeEventListener('keydown', handleKeyPress);
+                }
                 console.log(square);
                 console.log(wordPlacement);
                 let wordLength = wordAttempt.length;
@@ -32,7 +34,7 @@ function addPlacementListeners(wordAttempt) {
                     placeWord(wordArr, placementList);
                     tileRack.replenish(wordArr);
                 } else console.log('Word must cover the start square');
-            })
+            });
         })
     })
 }
