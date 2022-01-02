@@ -62,14 +62,30 @@ function getLetterObj(character) {
 }
 
 function getNeighbourPositions(wordPosArr) {
+    // Takes an array of positions on the board, represented as integers, and returns
+    // all neighbouring positions, taking into account board dimensions
     const neighbours = [];
     for (let pos of wordPosArr) {
         console.log(pos);
-        if (!neighbours.includes(pos)) {
-            if (pos % 15 !== 0) neighbours.push(pos - 1);
-            if (pos % 14 !== 0 || pos === 0) neighbours.push(pos + 1);
-            if (pos - 15 >= 0) neighbours.push(pos - 15);
-            if (pos + 15 < 15 ** 2) neighbours.push(pos + 15);
+        if (pos % 15 !== 0) {
+            if (!neighbours.includes(pos - 1) && !wordPosArr.includes(pos - 1)) {
+                neighbours.push(pos - 1);
+            }
+        }
+        if ((pos % 14 !== 0 || pos === 0) && pos + 1 < 15 ** 2) {
+            if (!neighbours.includes(pos + 1) && !wordPosArr.includes(pos + 1)) {
+                neighbours.push(pos + 1);
+            }
+        }
+        if (pos - 15 >= 0) {
+            if (!neighbours.includes(pos - 15) && !wordPosArr.includes(pos - 15)) {
+                neighbours.push(pos - 15);
+            }
+        }
+        if (pos + 15 < 15 ** 2) {
+            if (!neighbours.includes(pos + 15) && !wordPosArr.includes(pos + 15)) {
+                neighbours.push(pos + 15);
+            }
         }
     }
     return neighbours;
