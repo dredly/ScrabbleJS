@@ -6,6 +6,9 @@ function isValidStartPlacement(placementList) {
 // Initialise an object to store direction and starting square for placing words
 const wordPlacement = { start: 0, direction: 'right' };
 
+// Initialise a previous covered coordinates array
+const covered = new Set([]);
+
 // Initialise the tile rack
 setupTileRack();
 
@@ -32,6 +35,8 @@ function addPlacementListeners(wordAttempt) {
                 if (isValidStartPlacement(placementList)) {
                     const wordArr = wordAttempt.map(chr => getLetterObj(chr));
                     placeWord(wordArr, placementList);
+                    //Add the tile coordinates to the set of all covered tiles
+                    placementList.forEach(coord => covered.add(coord));
                     tileRack.replenish(wordArr);
                 } else console.log('Word must cover the start square');
             });

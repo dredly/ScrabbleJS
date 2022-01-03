@@ -90,3 +90,8 @@ function getNeighbourPositions(wordPosArr) {
     }
     return neighbours;
 }
+
+function isConnectedPlacement(coveredSet, proposed) {
+    // Checks if a proposed word to place is connected to previous words
+    return getNeighbourPositions(proposed).some(pos => coveredSet.has(pos));
+}
